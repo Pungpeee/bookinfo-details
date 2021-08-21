@@ -8,50 +8,59 @@ on:
     branches:  master 
 
 jobs:
-  setup-code:
-
+   test:
+      
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
+    - uses: actions/checkout@v
       with:
-        ruby-version: 2.7
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+        command: pwd
+    
+#   setup-code:
+
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Set up Ruby
+#       uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
+#       with:
+#         ruby-version: 2.7
+#         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       
-  build:
-     needs: setup-code
+#   build:
+#      needs: setup-code
   
-     runs-on: ubuntu-latest
-     steps: 
-     - uses: actions/checkout@v2
-     - name: login to ghcr get image
-       uses: docker/login-action@v1
-       with:
-          registry: ghcr.io
-          username: pungpeee
-          password: ${{ secrets.GITHUB_TOKEN }}
+#      runs-on: ubuntu-latest
+#      steps: 
+#      - uses: actions/checkout@v2
+#      - name: login to ghcr get image
+#        uses: docker/login-action@v1
+#        with:
+#           registry: ghcr.io
+#           username: pungpeee
+#           password: ${{ secrets.GITHUB_TOKEN }}
     
-     - name: Build images
-       uses: docker/build-push-action@v2
-       with:
-          file: ./Dockerfile
-          tags: ghcr.io/pungpeee/bookinfo-details
+#      - name: Build images
+#        uses: docker/build-push-action@v2
+#        with:
+#           file: ../Dockerfile
+#           tags: ghcr.io/pungpeee/bookinfo-details
           
-  deploy:
-    needs: build
+#   deploy:
+#     needs: build
     
-    runs-on: ubuntu-latest
-    steps: 
-    - name: Execute ssh command to remote server
-      uses: appleboy/ssh-action@master
-      with:
-         host: ${{ secrets.HOST }}
-         username: pungpeee
-         password: ${{ secrets.PASSWORD }}
-         run: |
-           docker images
-           docker ps -a
+#     runs-on: ubuntu-latest
+#     steps: 
+#     - name: Execute ssh command to remote server
+#       uses: appleboy/ssh-action@master
+#       with:
+#          host: ${{ secrets.HOST }}
+#          username: pungpeee
+#          password: ${{ secrets.PASSWORD }}
+#          run: |
+#            docker images
+#            docker ps -a
            
       

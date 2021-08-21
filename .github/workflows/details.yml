@@ -13,9 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: check path
     - uses: actions/checkout@v2
       with:
-        command: pwd
+        run: pwd
     
 #   setup-code:
 

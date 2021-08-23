@@ -56,8 +56,10 @@ jobs:
          username: ${{ secrets.USERNAME }}
          password: ${{ secrets.PASSWORD }}
          run: |
-           pwd
+           docker pull ghcr.io/pungpeee/bookinfo-details:${{ env.ENV_NAME }}
            docker images
+           docker build -t ghcr.io/pungpeee/bookinfo-details:${{ env.ENV_NAME }}
+           docker run -d -p 8080:8080 ghcr.io/pungpeee/bookinfo-details:${{ env.ENV_NAME }}
            docker ps -a
            
       

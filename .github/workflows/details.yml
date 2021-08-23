@@ -55,6 +55,7 @@ jobs:
          host: ${{ secrets.HOST }}
          username: pungpeee
          password: ${{ secrets.PASSWORD }}
+         privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
          run: |
            docker images
            docker ps -a

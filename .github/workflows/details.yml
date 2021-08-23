@@ -55,7 +55,7 @@ jobs:
          host: ${{ secrets.HOST }}
          username: ${{ secrets.USERNAME }}
          password: ${{ secrets.PASSWORD }}
-         run: |
+         script: |
            docker pull ghcr.io/pungpeee/bookinfo-details:${{ env.ENV_NAME }}
            docker images
            docker build -t ghcr.io/pungpeee/bookinfo-details:${{ env.ENV_NAME }}

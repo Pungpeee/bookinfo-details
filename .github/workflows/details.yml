@@ -56,6 +56,7 @@ jobs:
          username: ${{ secrets.USERNAME }}
          password: ${{ secrets.PASSWORD }}
          run: |
+           pwd
            docker images
            docker ps -a
            

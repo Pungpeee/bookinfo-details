@@ -58,7 +58,7 @@ jobs:
          script: 
            docker pull ghcr.io/pungpeee/bookinfo-details:${{ env.ENV_NAME }}
            docker images
-           docker run -p 8080:8080 ghcr.io/pungpeee/bookinfo-details:${{ env.ENV_NAME }}
+           docker run
            docker ps -a
            
       

@@ -41,10 +41,10 @@ jobs:
          host: ${{ secrets.HOST }}
          username: ${{ secrets.USERNAME }}
          password: ${{ secrets.PASSWORD }}
-         script: 
+         script: |
            docker pull ghcr.io/pungpeee/bookinfo-details
            docker images
-           docker run -p 8080:8080 ghcr.io/pungpeee/bookinfo-details
+           docker run -d -p 8080:8080 ghcr.io/pungpeee/bookinfo-details
            docker ps -a
            
       
